@@ -43,7 +43,6 @@ public class JWGAFemaleSpinoEntity extends CreatureEntity implements IAnimatable
     public AnimationFactory getFactory() {
         return this.factory;
     }
-
     public static AttributeModifierMap.MutableAttribute attributes() {
         return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 60d)
                 .add(Attributes.MOVEMENT_SPEED, 0.2d)

@@ -22,11 +22,9 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.example.client.renderer.entity.ExampleGeoRenderer;
-import software.bernie.example.registry.EntityRegistry;
+
 import software.bernie.geckolib3.GeckoLib;
 
-import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Alternacraft.MOD_ID)
@@ -38,6 +36,7 @@ public class Alternacraft
     private static final Logger LOGGER = LogManager.getLogger();
 
     public Alternacraft() {
+        GeckoLib.initialize();
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
@@ -50,7 +49,7 @@ public class Alternacraft
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        GeckoLib.initialize();
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerRenderers);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -68,7 +67,7 @@ public class Alternacraft
     }
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
-    public static void registerRenderers(final FMLClientSetupEvent event)
+    public void registerRenderers(final FMLClientSetupEvent event)
     {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.JWGAFEMALESPINO.get(),
                 manager -> new JWGAFemaleSpinoRenderer(manager));
