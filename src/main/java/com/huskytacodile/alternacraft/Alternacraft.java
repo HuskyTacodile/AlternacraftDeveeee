@@ -1,9 +1,15 @@
 package com.huskytacodile.alternacraft;
 
+import com.huskytacodile.alternacraft.client.render.entity.JWGAFemaleSpinoRenderer;
+import com.huskytacodile.alternacraft.entities.ModEntityTypes;
+import com.huskytacodile.alternacraft.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -32,6 +38,10 @@ public class Alternacraft
     private static final Logger LOGGER = LogManager.getLogger();
 
     public Alternacraft() {
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(eventBus);
+        ModEntityTypes.register(eventBus);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -57,6 +67,7 @@ public class Alternacraft
         // do something that can only be done on the client
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GEO_EXAMPLE_ENTITY.get(),
                 manager -> new ExampleGeoRenderer(manager));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.JWGAFEMALESPINO.get(), JWGAFemaleSpinoRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
