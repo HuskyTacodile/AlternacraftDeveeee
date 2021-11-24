@@ -67,7 +67,8 @@ public class Alternacraft
         // do something that can only be done on the client
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GEO_EXAMPLE_ENTITY.get(),
                 manager -> new ExampleGeoRenderer(manager));
-        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.JWGAFEMALESPINO.get(), JWGAFemaleSpinoRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.JWGAFEMALESPINO.get(),
+                 JWGAFemaleSpinoRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

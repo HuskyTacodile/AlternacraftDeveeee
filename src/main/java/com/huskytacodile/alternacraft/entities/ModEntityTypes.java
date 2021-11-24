@@ -16,7 +16,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<JWGAFemaleSpinoEntity>> JWGAFEMALESPINO =
             ENTITY_TYPES.register("jwgafemalespino",
                     () -> EntityType.Builder.of(JWGAFemaleSpinoEntity::new,
-                                    EntityClassification.CREATURE).sized(3f, 6f)
+                                    EntityClassification.CREATURE).sized(1f, 3f)
                             .build(new ResourceLocation(Alternacraft.MOD_ID, "jwgafemalespino").toString()));
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
