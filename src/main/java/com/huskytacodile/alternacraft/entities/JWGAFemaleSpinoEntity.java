@@ -15,6 +15,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class JWGAFemaleSpinoEntity extends CreatureEntity implements IAnimatable {
+    private AnimationFactory factory = new AnimationFactory(this);
     protected JWGAFemaleSpinoEntity(EntityType<? extends CreatureEntity> p_i48575_1_, World p_i48575_2_) {
         super(p_i48575_1_, p_i48575_2_);
     }
@@ -40,7 +41,7 @@ public class JWGAFemaleSpinoEntity extends CreatureEntity implements IAnimatable
 
     @Override
     public AnimationFactory getFactory() {
-        return null;
+        return this.factory;
     }
 
     public static AttributeModifierMap.MutableAttribute attributes() {
