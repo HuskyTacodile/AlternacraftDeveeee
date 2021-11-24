@@ -65,10 +65,13 @@ public class Alternacraft
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GEO_EXAMPLE_ENTITY.get(),
-                manager -> new ExampleGeoRenderer(manager));
+    }
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void registerRenderers(final FMLClientSetupEvent event)
+    {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.JWGAFEMALESPINO.get(),
-                 JWGAFemaleSpinoRenderer::new);
+                manager -> new JWGAFemaleSpinoRenderer(manager));
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
