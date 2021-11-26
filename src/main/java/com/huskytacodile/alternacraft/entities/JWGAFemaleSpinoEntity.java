@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -22,14 +23,14 @@ public class JWGAFemaleSpinoEntity extends CreatureEntity implements IAnimatable
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (!(animationSpeed > -0.10F && animationSpeed < 0.05F) && !this.isAggressive()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.spino.walk", true));
             return PlayState.CONTINUE;
         }
         if (this.isAggressive() && !(this.dead || this.getHealth() < 0.01 || this.isDeadOrDying())) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("attack", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.spino.attack", true));
             return PlayState.CONTINUE;
         }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.spino.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -48,5 +49,14 @@ public class JWGAFemaleSpinoEntity extends CreatureEntity implements IAnimatable
                 .add(Attributes.MOVEMENT_SPEED, 0.2d)
                 .add(Attributes.FOLLOW_RANGE, 16D)
                 .add(Attributes.ATTACK_DAMAGE, 10.5d);
+    }
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false));
+        this.goalSelector.addGoal(2, new RandomWalkingGoal(this, 1));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(5, new SwimGoal(this));
     }
 }

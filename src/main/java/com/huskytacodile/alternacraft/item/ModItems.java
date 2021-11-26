@@ -18,6 +18,12 @@ public class ModItems {
             () -> new ModSpawnEggItem(ModEntityTypes.JWGAFEMALESPINO, 0x464F56, 0x1D6336,
                     new Item.Properties().tab(ItemGroup.TAB_MISC)));
 
+    public static final RegistryObject<Item> FOSSIL = ITEMS.register("fossil",
+            ()-> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+
+    public static final RegistryObject<Item> PAINITE = ITEMS.register("painite",
+            ()-> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

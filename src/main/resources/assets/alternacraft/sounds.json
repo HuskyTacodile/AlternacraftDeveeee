@@ -1,0 +1,23 @@
+{
+  "spino_roar1": {
+    "category": "entities",
+    "subtitle": "alternacraft.spino_roar1",
+    "sounds": [
+      "alternacraft:spino_roar1"
+    ]
+  },
+  "spino_roar2": {
+    "category": "entities",
+    "subtitle": "alternacraft.spino_roar2",
+    "sounds": [
+      "alternacraft:spino_roar2"
+    ]
+  },
+  "spino_roar3": {
+    "category": "entities",
+    "subtitle": "alternacraft.spino_roar3",
+    "sounds": [
+      "alternacraft:spino_roar3"
+    ]
+  }
+}
