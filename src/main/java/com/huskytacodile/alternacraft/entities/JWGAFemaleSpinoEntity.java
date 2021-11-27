@@ -119,7 +119,6 @@ public class JWGAFemaleSpinoEntity extends TameableEntity implements IAnimatable
                 .add(Attributes.FOLLOW_RANGE, 16.0D)
                 .add(Attributes.ATTACK_DAMAGE, 10.0D);
     }
-
     public ActionResultType mobInteract(PlayerEntity p_230254_1_, Hand p_230254_2_) {
         ItemStack itemstack = p_230254_1_.getItemInHand(p_230254_2_);
         Item item = itemstack.getItem();
