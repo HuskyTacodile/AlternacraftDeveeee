@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,8 +22,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -31,6 +30,8 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+
 
 public class JWGAFemaleSpinoEntity extends TameableEntity implements IAnimatable, IRideable {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -108,10 +109,7 @@ public class JWGAFemaleSpinoEntity extends TameableEntity implements IAnimatable
     public AnimationFactory getFactory() {
         return this.factory;
     }
-    @SubscribeEvent
-    public static void addEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(ModEntityTypes.JWGAFEMALESPINO.get(), JWGAFemaleSpinoEntity.attributes().build());
-    }
+
     public static AttributeModifierMap.MutableAttribute attributes() {
         return MobEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 69.00D)

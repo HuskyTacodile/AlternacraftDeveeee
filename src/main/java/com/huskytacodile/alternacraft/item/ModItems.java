@@ -5,6 +5,7 @@ import com.huskytacodile.alternacraft.entities.ModEntityTypes;
 import com.huskytacodile.alternacraft.item.custom.ModSpawnEggItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SwordItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,6 +25,12 @@ public class ModItems {
     public static final RegistryObject<Item> PAINITE = ITEMS.register("painite",
             ()-> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
 
+    public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
+            ()-> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+
+    public static final RegistryObject<Item> PAINITE_SWORD = ITEMS.register("painite_sword",
+            ()-> new SwordItem(ModItemTier.PAINITE, 9,3f,new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+//not done, start 5:12, episode 16
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
