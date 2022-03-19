@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "scpmadness:block/black_block_1_red_line"
+  }
+}
